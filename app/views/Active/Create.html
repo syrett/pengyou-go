@@ -1,0 +1,54 @@
+{{set . "title" "Active"}}
+{{template "header.html" .}}
+
+<header class="hero-unit" style="background-color:#A9F16C">
+  <div class="container">
+    <div class="row">
+      <div class="hero-text">
+        <h1>Create Active</h1>
+        <p></p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="span6">
+      {{template "flash.html" .}}
+      <form action={{url "Active.Create"}} method="POST">
+        {{with $field := field "active.Title" .}}
+        <label class="control-label" for="{{$field.Id}}">活动名称</label>
+        <input type="text" id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}" required>
+        {{if $field.Error}} 
+        <span class="help-inline">{{$field.Error}}</span> 
+        {{end}} 
+        {{end}}
+
+        {{with $field := field "active.Description" .}}
+        <label class="control-label" for="{{$field.Id}}">描述</label>
+        <textarea id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}" > </textarea>
+        {{end}}
+
+        {{with $field := field "active.Starttime" .}}
+        <label class="control-label" for="{{$field.Id}}">活动开始时间</label>
+        <input type="text" id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}" required>
+        {{end}}
+
+        {{with $field := field "active.Endtime" .}}
+        <label class="control-label" for="{{$field.Id}}">活动结束时间</label>
+        <input type="text" id="{{$field.Id}}" name="{{$field.Name}}" value="{{$field.Flash}}" required>
+        {{end}}
+        
+        
+        <div class="right">
+        <input type="submit" value="提交" />
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>
+
+{{template "footer.html" .}}
